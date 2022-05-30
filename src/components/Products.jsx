@@ -12,54 +12,51 @@ const Products = () => {
   // TODO: Remove below const and instead import them from chakra
  
   const[product,setproduct]=useState([])
-  console.log(product)
+  const [page,setPage]=useState(1);
+
+const [limit,setLimit]=useState(3)
+
   
-  useEffect(()=>{
-    fetch("http://localhost:8080/products")
-    .then((d)=>d.json())
-    .then((data)=>{
+//   useEffect(()=>{
+//     fetch("http://localhost:8080/products").then((d)=>d.json()).then((data)=>{
        
-        setproduct(data)
+//         setproduct(data)
        
         
-    })
+//     })
 
 
     
-},[])
+// },[])
 
 
  
-const [page,setPage]=useState(1);
-const [todo,settodo]=useState([]);
-const [limit,setLimit]=useState(3)
-console.log(page);
+
 
  
 
 useEffect(()=>{
  
  axios.get(`http://localhost:8080/products?_page=${page}&_limit=${limit}`).then((response)=>{
-   settodo(response.data);
+   setproduct(response.data);
  })  
  },[page,limit])
 
   return (
-   
+    // <Flex>
     <div>
 
       <AddProduct></AddProduct>
-      <br/>
+      <br></br>
       <Grid className={style.box}>
       {product.map((ele)=>{
         return(<Product ele={ele}></Product>)
       })}
       </Grid>
-      <br/>
-      
+      <br></br>
      <Pagination setLimit={setLimit} limit={limit} page={page} setPage={setPage} ></Pagination>
      </div>
-    
+    //  </Flex>
   );
 };
 

@@ -3,12 +3,13 @@ import { Button,Modal,ModalBody,Input,Select,RadioGroup,Radio } from "@chakra-ui
 
 const AddProduct = () => {
   // TODO: Remove below const and instead import them from chakra
+  // const { isOpen, onOpen, onClose } = useDisclosure()
   
   return (
     <>
      
-      <Button my={4} data-cy="add-product-button">Add New Button</Button>
-      <Modal>
+      <Button my={4} data-cy="add-product-button" >Add New Button</Button>
+      <Modal >
         <ModalBody pb={6}>
           <Input data-cy="add-product-title" />
           <Select data-cy="add-product-category">
